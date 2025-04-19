@@ -53,7 +53,7 @@ const CabinCard = ({ cabin }: CabinCardProps) => {
           onClick={handleCallClick}
         >
           <Phone size={16} />
-          Позвонить для уточнения деталей
+          Позвонить для бронирования
         </Button>
       </CardFooter>
     </Card>

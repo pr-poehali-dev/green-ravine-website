@@ -1,52 +1,47 @@
-import { SITE_NAME } from "@/lib/constants";
 import { CheckCircle2 } from "lucide-react";
 
 const About = () => {
   const benefits = [
-    "Экологически чистый район",
-    "Полностью оборудованные домики",
-    "Удобное расположение",
-    "Близость к природным достопримечательностям"
+    "Уединенное расположение в экологически чистом районе",
+    "Полностью оборудованные домики со всеми удобствами",
+    "Возможность насладиться природой в любое время года",
+    "Идеальное место для семейного отдыха и встреч с друзьями",
+    "Гибкие условия аренды под ваши потребности",
+    "Безопасность и приватность вашего отдыха"
   ];
 
   return (
-    <section id="about" className="py-16 bg-secondary">
+    <section id="about" className="py-16 bg-greenRavine-50">
       <div className="container px-4">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-greenRavine-800">О <span className="text-greenRavine-600">{SITE_NAME}</span></h2>
-            <p className="text-gray-700 mb-6">
-              Мы предлагаем уютные домики для отдыха на природе в живописном уголке с чистым воздухом и красивыми пейзажами. 
-              Наши домики расположены в экологически чистом районе, вдали от городского шума и суеты.
+            <h2 className="text-3xl font-bold text-greenRavine-800 mb-4">О Green Ravine</h2>
+            <p className="text-muted-foreground mb-6">
+              Green Ravine — это уникальное место для вашего отдыха на природе в комфортных условиях. 
+              Мы предлагаем в аренду уютные домики, расположенные в живописном месте среди леса и рядом с водоемами.
             </p>
-            <p className="text-gray-700 mb-6">
-              Каждый домик оснащен всем необходимым для комфортного проживания: мебелью, кухонной техникой, санузлом. 
-              На территории есть места для барбекю, детская площадка и парковка.
+            <p className="text-muted-foreground mb-8">
+              Каждый домик оборудован всем необходимым для комфортного проживания — от кухонной техники до
+              теплых полов и удобной мебели. Вы можете насладиться тишиной, свежим воздухом и красотой
+              окружающей природы.
             </p>
-            <ul className="space-y-3">
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {benefits.map((benefit, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <CheckCircle2 className="text-greenRavine-600" size={20} />
-                  <span>{benefit}</span>
-                </li>
+                <div key={index} className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-greenRavine-600 mt-0.5 flex-shrink-0" />
+                  <span className="text-sm">{benefit}</span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
-          <div className="relative">
-            <div className="aspect-square rounded-lg overflow-hidden">
-              <img 
-                src="/placeholder.svg" 
-                alt="Домик в Green Ravine" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-5 -left-5 w-48 h-48 rounded-lg overflow-hidden border-4 border-white shadow-lg hidden md:block">
-              <img 
-                src="/placeholder.svg" 
-                alt="Природа вокруг" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+          
+          <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
+            <img 
+              src="/placeholder.svg" 
+              alt="Природа вокруг домиков" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

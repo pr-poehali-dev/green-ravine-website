@@ -1,89 +1,58 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Leaf, Cloud, Waves, Mountain } from "lucide-react";
-
-interface NatureFeatureProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const NatureFeature = ({ icon, title, description }: NatureFeatureProps) => (
-  <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
-    <CardContent className="p-6">
-      <div className="flex flex-col items-center text-center">
-        <div className="w-12 h-12 rounded-full bg-greenRavine-100 flex items-center justify-center mb-4">
-          {icon}
-        </div>
-        <h3 className="text-xl font-medium text-greenRavine-800 mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </div>
-    </CardContent>
-  </Card>
-);
+import { Leaf, Droplets, Mountain } from "lucide-react";
 
 const Nature = () => {
-  const features = [
+  const activities = [
     {
-      icon: <Leaf className="h-6 w-6 text-greenRavine-600" />,
-      title: "Первозданная природа",
-      description: "Наши домики расположены в окружении нетронутой природы, вдали от городской суеты и шума."
+      icon: <Leaf className="h-10 w-10 text-greenRavine-600" />,
+      title: "Прогулки по лесу",
+      description: "Насладитесь прогулками по живописным тропам в окружении вековых деревьев и уникальной флоры."
     },
     {
-      icon: <Cloud className="h-6 w-6 text-greenRavine-600" />,
-      title: "Чистый воздух",
-      description: "Насладитесь кристально чистым воздухом, наполненным ароматами леса и полевых трав."
+      icon: <Droplets className="h-10 w-10 text-greenRavine-600" />,
+      title: "Отдых у воды",
+      description: "Искупайтесь в кристально чистой воде или отправьтесь на рыбалку на ближайшем озере или реке."
     },
     {
-      icon: <Waves className="h-6 w-6 text-greenRavine-600" />,
-      title: "Водоемы рядом",
-      description: "В пешей доступности находятся живописные озера и реки, где можно купаться и рыбачить."
+      icon: <Mountain className="h-10 w-10 text-greenRavine-600" />,
+      title: "Экспедиции и пикники",
+      description: "Организуйте пикник на природе или отправьтесь в мини-экспедицию по живописным окрестностям."
     }
   ];
 
   return (
-    <section id="nature" className="py-16">
+    <section id="nature" className="py-16 bg-gradient-to-b from-white to-greenRavine-50">
       <div className="container px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-greenRavine-800 mb-2">Живописная природа</h2>
+          <h2 className="text-3xl font-bold text-greenRavine-800 mb-2">Природа вокруг</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Окунитесь в мир удивительной природы, окружающей наши домики
+            Наши домики расположены в живописной местности, где вы сможете насладиться всеми прелестями природы
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {features.map((feature, idx) => (
-            <NatureFeature
-              key={idx}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
+        <div className="grid md:grid-cols-3 gap-6">
+          {activities.map((activity, index) => (
+            <Card key={index} className="border-none shadow-md bg-white">
+              <CardContent className="pt-6 flex flex-col items-center text-center">
+                <div className="mb-4 bg-greenRavine-100 p-4 rounded-full">
+                  {activity.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-greenRavine-800">{activity.title}</h3>
+                <p className="text-muted-foreground">{activity.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="prose max-w-none">
-            <h3 className="text-2xl font-semibold text-greenRavine-800 mb-4">Уникальное расположение</h3>
-            <p>
-              Наши домики расположены в одном из самых живописных уголков России. Здесь вы можете 
-              насладиться тишиной и спокойствием вдали от городской суеты, но при этом добраться до нас 
-              очень просто – всего 2 часа езды от Москвы.
-            </p>
-            <p>
-              Местность славится своими лесами, где можно собирать грибы и ягоды, прекрасными озерами 
-              с чистейшей водой и разнообразием флоры и фауны. В окрестностях можно встретить зайцев, 
-              лис, белок и множество видов птиц.
-            </p>
-            <p>
-              Для любителей активного отдыха доступны пешие и велосипедные маршруты различной сложности, 
-              а также возможность рыбалки на ближайших водоемах.
-            </p>
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="rounded-lg overflow-hidden h-60 md:h-80">
+            <img src="/placeholder.svg" alt="Природа" className="w-full h-full object-cover" />
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img src="/placeholder.svg" alt="Природа" className="rounded-lg object-cover w-full h-full" />
-            <img src="/placeholder.svg" alt="Озеро" className="rounded-lg object-cover w-full h-48" />
-            <img src="/placeholder.svg" alt="Лес" className="rounded-lg object-cover w-full h-48" />
-            <img src="/placeholder.svg" alt="Панорама" className="rounded-lg object-cover w-full h-full" />
+          <div className="rounded-lg overflow-hidden h-60 md:h-80 md:mt-8">
+            <img src="/placeholder.svg" alt="Озеро" className="w-full h-full object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden h-60 md:h-80">
+            <img src="/placeholder.svg" alt="Лес" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

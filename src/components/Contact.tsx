@@ -1,49 +1,13 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CONTACTS, DISCLAIMER } from "@/lib/constants";
-
-interface ContactItemProps {
-  icon: React.ReactNode;
-  title: string;
-  description: React.ReactNode;
-}
-
-// Компонент для информационного блока
-const ContactItem = ({ icon, title, description }: ContactItemProps) => (
-  <div className="flex gap-4">
-    <div className="shrink-0">
-      {icon}
-    </div>
-    <div>
-      <h3 className="font-medium text-lg text-greenRavine-800">{title}</h3>
-      <div className="text-gray-600">{description}</div>
-    </div>
-  </div>
-);
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Phone, Mail, MapPin, Instagram, MessageSquare, Send } from "lucide-react";
+import { CONTACTS } from "@/lib/constants";
 
 const Contact = () => {
-  const contactItems = [
-    {
-      icon: <Clock className="w-10 h-10 text-greenRavine-600" />,
-      title: "Всегда на связи",
-      description: "Звоните в любое удобное для вас время, мы ответим на все ваши вопросы"
-    },
-    {
-      icon: <Phone className="w-10 h-10 text-greenRavine-600" />,
-      title: "Телефон",
-      description: (
-        <a href={`tel:${CONTACTS.phone}`} className="hover:text-greenRavine-700 transition-colors">
-          {CONTACTS.phone}
-        </a>
-      )
-    },
-    {
-      icon: <MapPin className="w-10 h-10 text-greenRavine-600" />,
-      title: "Расположение",
-      description: "Все наши домики находятся в экологически чистых районах с хорошей транспортной доступностью."
-    }
-  ];
+  const handleSocialClick = (url: string) => {
+    window.open(url, "_blank");
+  };
 
   return (
     <section id="contact" className="py-16 bg-greenRavine-50">
@@ -51,52 +15,103 @@ const Contact = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-greenRavine-800 mb-2">Свяжитесь с нами</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Позвоните нам, чтобы уточнить условия аренды и задать интересующие вопросы
+            Готовы забронировать домик или у вас остались вопросы? Мы всегда на связи!
           </p>
-          <p className="text-xs text-muted-foreground mt-2">{DISCLAIMER}</p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            {contactItems.map((item, index) => (
-              <ContactItem
-                key={index}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-          <div className="lg:col-span-3">
-            <Card className="w-full">
-              <CardHeader>
-                <CardTitle className="text-center text-2xl">Хотите арендовать домик?</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center space-y-4">
-                <p className="text-gray-600">
-                  Позвоните нам напрямую для быстрого оформления аренды. Мы расскажем о доступных датах, 
-                  условиях проживания и ответим на все ваши вопросы.
-                </p>
-                <div className="flex justify-center gap-4 flex-wrap">
-                  <Button 
-                    className="bg-greenRavine-600 hover:bg-greenRavine-700 gap-2"
-                    size="lg"
-                    onClick={() => window.location.href = `tel:${CONTACTS.phone}`}
-                  >
-                    <Phone className="w-4 h-4" />
-                    Позвонить сейчас
-                  </Button>
-                  
-                  <Button 
-                    variant="outline"
-                    size="lg"
-                    onClick={() => window.location.href = `https://wa.me/${CONTACTS.social.whatsapp.replace(/\D/g, '')}`}
-                  >
-                    Написать в WhatsApp
-                  </Button>
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-greenRavine-800">Наши контакты</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="bg-greenRavine-100 p-3 rounded-full">
+                  <Phone className="h-5 w-5 text-greenRavine-600" />
                 </div>
-              </CardContent>
-            </Card>
+                <div>
+                  <h4 className="font-medium">Телефон</h4>
+                  <a href={`tel:${CONTACTS.phone}`} className="text-muted-foreground hover:text-greenRavine-600">
+                    {CONTACTS.phone}
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-greenRavine-100 p-3 rounded-full">
+                  <Mail className="h-5 w-5 text-greenRavine-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Email</h4>
+                  <a href={`mailto:${CONTACTS.email}`} className="text-muted-foreground hover:text-greenRavine-600">
+                    {CONTACTS.email}
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="bg-greenRavine-100 p-3 rounded-full">
+                  <MapPin className="h-5 w-5 text-greenRavine-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium">Адрес</h4>
+                  <p className="text-muted-foreground">{CONTACTS.address}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="mt-8">
+              <h3 className="text-xl font-semibold mb-4 text-greenRavine-800">Мы в соцсетях</h3>
+              <div className="flex space-x-4">
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="rounded-full"
+                  onClick={() => handleSocialClick(CONTACTS.social.instagram)}
+                >
+                  <Instagram className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="rounded-full"
+                  onClick={() => handleSocialClick(CONTACTS.social.telegram)}
+                >
+                  <MessageSquare className="h-5 w-5" />
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="icon" 
+                  className="rounded-full"
+                  onClick={() => handleSocialClick(CONTACTS.social.whatsapp)}
+                >
+                  <Send className="h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-xl font-semibold mb-6 text-greenRavine-800">Быстрая заявка</h3>
+            <form className="space-y-4">
+              <div>
+                <Input placeholder="Ваше имя" />
+              </div>
+              <div>
+                <Input placeholder="Номер телефона" type="tel" />
+              </div>
+              <div>
+                <Input placeholder="Email" type="email" />
+              </div>
+              <div>
+                <Textarea placeholder="Сообщение" className="min-h-[120px]" />
+              </div>
+              <Button type="submit" className="w-full bg-greenRavine-600 hover:bg-greenRavine-700">
+                Отправить заявку
+              </Button>
+              <p className="text-xs text-muted-foreground mt-2">
+                Нажимая кнопку "Отправить заявку", вы соглашаетесь с политикой обработки персональных данных
+              </p>
+            </form>
           </div>
         </div>
       </div>
