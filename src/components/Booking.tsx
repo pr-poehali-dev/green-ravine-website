@@ -1,6 +1,25 @@
 import BookingForm from "@/components/BookingForm";
 import { MapPin, CalendarDays, Clock } from "lucide-react";
 
+interface InfoItemProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+// Компонент для информационного блока
+const InfoItem = ({ icon, title, description }: InfoItemProps) => (
+  <div className="flex gap-4">
+    <div className="shrink-0">
+      {icon}
+    </div>
+    <div>
+      <h3 className="font-medium text-lg text-greenRavine-800">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  </div>
+);
+
 const Booking = () => {
   const infoItems = [
     {
@@ -33,15 +52,12 @@ const Booking = () => {
         <div className="grid lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 space-y-8">
             {infoItems.map((item, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="shrink-0">
-                  {item.icon}
-                </div>
-                <div>
-                  <h3 className="font-medium text-lg text-greenRavine-800">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              </div>
+              <InfoItem
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+              />
             ))}
           </div>
           <div className="lg:col-span-3">
