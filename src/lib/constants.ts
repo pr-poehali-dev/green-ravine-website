@@ -1,7 +1,6 @@
-
 export const SITE_NAME = "Green Ravine";
 export const SITE_DESCRIPTION = "Уютные домики для отдыха на природе";
-export const DISCLAIMER = "* Компания не занимается гостиничными услугами.";
+export const DISCLAIMER = "* Компания не оказывает гостиничные услуги. Домики предоставляются в аренду для отдыха.";
 
 export interface Cabin {
   id: number;
