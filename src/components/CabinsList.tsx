@@ -10,6 +10,9 @@ const CabinsList = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Выберите домик по своему вкусу и насладитесь отдыхом на природе в комфортных условиях
           </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            Для уточнения стоимости и условий аренды, пожалуйста, свяжитесь с нами по телефону
+          </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

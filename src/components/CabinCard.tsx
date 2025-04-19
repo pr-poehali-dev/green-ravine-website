@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Users, Home, Phone } from "lucide-react";
+import { Users, Phone } from "lucide-react";
 import type { Cabin } from "@/lib/constants";
 import { CONTACTS } from "@/lib/constants";
 
@@ -10,7 +10,7 @@ interface CabinCardProps {
 }
 
 const CabinCard = ({ cabin }: CabinCardProps) => {
-  const { title, description, price, capacity, features, image } = cabin;
+  const { title, description, capacity, features, image } = cabin;
 
   const handleCallClick = () => {
     window.location.href = `tel:${CONTACTS.phone}`;
@@ -47,17 +47,13 @@ const CabinCard = ({ cabin }: CabinCardProps) => {
           <span>{capacity}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between items-center border-t pt-4">
-        <div className="font-semibold">
-          <span className="text-lg text-greenRavine-700">{price} ₽</span>
-          <span className="text-sm text-muted-foreground">/сутки</span>
-        </div>
+      <CardFooter className="flex justify-center items-center border-t pt-4">
         <Button 
-          className="bg-greenRavine-600 hover:bg-greenRavine-700 gap-2"
+          className="bg-greenRavine-600 hover:bg-greenRavine-700 gap-2 w-full"
           onClick={handleCallClick}
         >
           <Phone size={16} />
-          Позвонить
+          Позвонить для уточнения деталей
         </Button>
       </CardFooter>
     </Card>
